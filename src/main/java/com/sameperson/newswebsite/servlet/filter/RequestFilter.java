@@ -7,7 +7,7 @@ import java.io.IOException;
 
 
 @WebFilter("/*")
-public class RequestFilter implements javax.servlet.Filter {
+public class RequestFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
