@@ -1,0 +1,236 @@
+/****************************
+GENERAL
+*****************************/
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+a {
+  text-decoration: none
+}
+
+img {
+  max-width: 100%;
+}
+
+h3 {
+  margin: 0 0 1em 0;
+}
+
+/****************************
+COLORS
+*****************************/
+
+body {
+    background-color: #e0e0e0;
+    color: #7e7c7d;
+}
+
+header {
+    background: #333333;
+    border-color: #000000;
+}
+
+h1, h2 {
+    color: #fff;
+}
+
+nav a, nav a:visited {
+    color: #fff;
+}
+
+nav {
+    background: #000000;
+}
+
+
+nav a.selected, nav a:hover {
+    color: #FF5500;
+}
+
+.newsTable a, .newsTable a:visited {
+    color: #222222;
+}
+
+.newsTable a:hover {
+    color: #a43800;
+    text-decoration: none;
+}
+
+footer a, footer a:visited {
+    color: #222222;
+}
+
+/****************************
+MAIN PAGE NEWS LIST
+*****************************/
+
+.newsTable {
+  margin: auto;
+  font-size: 20px;
+}
+
+.newsInstance {
+  margin: 10px;
+  padding: 10px;
+  background-color: #bbbdbe;
+  color: #000000;
+}
+
+
+.time {
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #fff;
+  background-color: #dd0000;
+}
+
+/****************************
+USERS LIST
+*****************************/
+
+.usersTable {
+    margin: auto;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-width: 15px;
+    background-color: #bbbdbe;
+    color: #000000;
+}
+
+.userNode {
+    padding: 3px 50px 3px 50px;
+    border-width: 15px;
+    font-size: 20px;
+}
+
+.tableHeader {
+    padding: 3px 50px 3px 50px;
+    background-color: #dd0000;
+}
+
+/****************************
+NEWS INSTANCE
+*****************************/
+
+
+.login-form {
+    margin: 0 auto;
+    padding: 20px 20px 20px;
+    width: 310px;
+    border-radius: 3px;
+}
+
+/****************************
+NEWS INSTANCE
+*****************************/
+
+.newsPage {
+    margin: auto;
+    width: 100%;
+    border: 3px solid #646360;
+    padding: 10px;
+    background-color: #dfddd4;
+    color: #121212;
+}
+
+.newsTitle {
+    margin-bottom: 25px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.newsBody {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+/****************************
+HEADING
+*****************************/
+
+header {
+  float: left;
+  margin: 0 0 30px 0;
+  padding: 5px 0 0 0;
+  width: 100%;
+}
+
+h1 {
+  font-family: 'Changa One', sans-serif;  
+  margin: 15px 0;
+  font-size: 1.75em;
+  font-weight: normal;
+  line-height: 0.8em;
+}
+
+h2 {
+  font-size: 0.75em;
+  margin: -5px 0 0;
+  font-weight: normal;
+}
+
+
+/****************************
+FOOTER
+*****************************/
+
+footer {
+    font-size: 0.75em;
+    text-align: center;
+    clear: both;
+    padding-top: 50px;
+    color: #7E7C7D;
+}
+
+/****************************
+NAVIGATION
+*****************************/
+
+nav {
+  text-align: center;
+  padding: 10px 0;
+  margin: 20px 0 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0 10px;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  font-weight: 800;
+  padding: 10px 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
