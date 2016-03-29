@@ -24,7 +24,7 @@
   </nav>
 </header>
 <body>
-    <div class="login-form">
+    <div class="sign-up-form">
         <form name="registrationForm" method="post" action="/sign-up">
             <ul style="list-style-type:none">
                 <li><label>Username</label>
