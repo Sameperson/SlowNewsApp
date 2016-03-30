@@ -7,7 +7,7 @@ public class UserList {
     private static UserList instance;
     private ArrayList<UserBean> listOfTheUsers;
 
-    public static UserList getInstance() {
+    public static synchronized UserList getInstance() {
         if(instance == null) {
             instance = new UserList();
         }

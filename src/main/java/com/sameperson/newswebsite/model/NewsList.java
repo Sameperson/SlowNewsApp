@@ -8,7 +8,7 @@ public class NewsList {
     private static NewsList instance;
     private ArrayList<NewsBean> listOfTheNews;
 
-    public static NewsList getInstance() {
+    public static synchronized NewsList getInstance() {
         if(instance == null) {
             instance = new NewsList();
         }
