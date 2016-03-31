@@ -56,4 +56,9 @@ public class NewsBean {
         this.timeOfPublication = LocalDateTime.now();
     }
 
+    @Override
+    public String toString() {
+        return title;
+    }
+
 }

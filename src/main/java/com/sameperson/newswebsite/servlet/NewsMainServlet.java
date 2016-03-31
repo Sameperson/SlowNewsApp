@@ -27,8 +27,10 @@ public class NewsMainServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/mainPage.jsp");
 
+
         newsList = NewsList.getInstance();
         req.setAttribute("newsList", newsList.getList());
+        req.setAttribute("username", req.getSession().getAttribute("username"));
         requestDispatcher.forward(req, resp);
     }
 }

@@ -23,6 +23,19 @@
   </nav>
 </header>
 <body>
+<body>
+<div class="sign-up-form">
+  <form name="loginForm" method="post" action="/login">
+    <ul style="list-style-type:none">
+      <li><label>Username</label>
+        <input type="text" name="username" placeholder="Your username" required></li>
+      <li><label>Password</label>
+        <input type="password" name="password" placeholder="Your password" required></li>
+      <li>
+        <input type="submit" value="Sign-In"></li>
+    </ul>
+  </form>
+</div>
 <%@include file="html-elements/footer.jsp" %>
 </body>
 </html>

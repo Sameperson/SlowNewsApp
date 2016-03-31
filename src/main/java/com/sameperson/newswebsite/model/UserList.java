@@ -23,6 +23,24 @@ public class UserList {
         }
     }
 
+    public UserBean findByName(String name) {
+        for(UserBean userBean : listOfTheUsers) {
+            if(userBean.getUsername().equals(name)) {
+                return userBean;
+            }
+        }
+        return null;
+    }
+
+    public boolean containsUser(String name) {
+        for(UserBean userBean : listOfTheUsers) {
+            if(userBean.getUsername().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<UserBean> getList() {
         return listOfTheUsers;
     }

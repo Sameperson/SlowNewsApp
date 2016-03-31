@@ -23,6 +23,12 @@
     </nav>
   </header>
   <body>
+  <c:if test="${empty username}">
+    Greetings, guest! <a href="/login">(login)</a>
+  </c:if>
+  <c:if test="${not empty username}">
+    Greetings ${username}! <a href="/logout">(logout)</a>
+  </c:if>
     <table class="newsTable">
       <c:forEach items="${newsList}" var="news">
         <tr>
