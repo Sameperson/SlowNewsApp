@@ -7,6 +7,7 @@ public class NewsList {
 
     private static NewsList instance;
     private ArrayList<NewsBean> listOfTheNews;
+    private NewsGenerator generator;
 
     public static synchronized NewsList getInstance() {
         if(instance == null) {
@@ -17,6 +18,10 @@ public class NewsList {
 
     public synchronized void addNews(String name, String title, String body) {
         listOfTheNews.add(0, new NewsBean(name, title, body));
+    }
+
+    public synchronized void addNews(NewsBean newsBean) {
+        listOfTheNews.add(0, newsBean);
     }
 
     public ArrayList<NewsBean> getList() {
@@ -32,8 +37,15 @@ public class NewsList {
         return null;
     }
 
+    public void generateNews(int quantity) {
+        for(int i = 0; i < quantity; i++) {
+            addNews(generator.generateNews());
+        }
+    }
+
     protected NewsList() {
         listOfTheNews = new ArrayList<>();
+        generator = new NewsGenerator();
         addNews("20160327-gravitational-waves", "New era in astronomy begins with gravitational wave detection", "This morning’s historic press conference " +
                 "in Washington ushered in a new era of astronomy, in a very exciting way. The director of the National Science Foundation, astronomer" +
                 " France C?rdova, led the discussion that announced the detection of gravitational waves from two merging black holes, the first such detection in history. \n" +
@@ -85,6 +97,10 @@ public class NewsList {
                 "very detailed radar images of the comet nucleus over three nights around the time of closest approach,\" said Shantanu Naidu, a " +
                 "postdoctoral researcher at NASA's Jet Propulsion Laboratory in Pasadena, California, who works with the radar team and led the " +
                 "observations during the comet's flyby. We can see surface features as small as 8 metres per pixel.");
+
+        generateNews(15);
     }
+
+
 
 }

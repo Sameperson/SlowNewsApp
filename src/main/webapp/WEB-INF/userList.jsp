@@ -18,12 +18,13 @@
     <ul>
       <li><a href="/">News feed</a></li>
       <li><a href="archive">Archive</a></li>
-      <li><a href="login">Login</a></li>
-      <li><a href="sign-up">Sign-Up</a></li>
+      <li><a href="login">Log in</a></li>
+      <li><a href="sign-up">Sign up</a></li>
     </ul>
   </nav>
 </header>
 <body>
+<%@include file="elements/greeting.jsp" %>
   <table class="usersTable">
     <tr class="tableHeader">
       <th class="userNode">Registration time</th>
@@ -41,6 +42,6 @@
     </c:forEach>
   </table>
 
-  <%@include file="html-elements/footer.jsp" %>
+<%@include file="elements/footer.jsp" %>
 </body>
 </html>

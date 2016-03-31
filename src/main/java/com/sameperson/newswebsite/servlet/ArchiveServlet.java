@@ -21,8 +21,6 @@ public class ArchiveServlet extends HttpServlet {
         String username = (String)req.getSession().getAttribute("username");
         req.setAttribute("username", username);
         req.setAttribute("newsList", archiveList.getUsersArchive(username));
-
-
         getServletContext().getRequestDispatcher("/WEB-INF/archive.jsp").forward(req, resp);
 
 

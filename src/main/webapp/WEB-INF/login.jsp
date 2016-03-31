@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <title>Slow News</title>
@@ -17,13 +18,13 @@
     <ul>
       <li><a href="/">News feed</a></li>
       <li><a href="archive">Archive</a></li>
-      <li><a href="login" class="selected">Login</a></li>
-      <li><a href="sign-up">Sign-Up</a></li>
+      <li><a href="login" class="selected">Log in</a></li>
+      <li><a href="sign-up">Sign up</a></li>
     </ul>
   </nav>
 </header>
 <body>
-<body>
+<%@include file="elements/greeting.jsp" %>
 <div class="sign-up-form">
   <form name="loginForm" method="post" action="/login">
     <ul style="list-style-type:none">
@@ -36,6 +37,6 @@
     </ul>
   </form>
 </div>
-<%@include file="html-elements/footer.jsp" %>
+<%@include file="elements/footer.jsp" %>
 </body>
 </html>

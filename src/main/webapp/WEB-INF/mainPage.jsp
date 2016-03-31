@@ -17,18 +17,13 @@
       <ul>
         <li><a href="/" class="selected">News feed</a></li>
         <li><a href="archive">Archive</a></li>
-        <li><a href="login">Login</a></li>
-        <li><a href="sign-up">Sign-Up</a></li>
+        <li><a href="login">Log in</a></li>
+        <li><a href="sign-up">Sign up</a></li>
       </ul>
     </nav>
   </header>
   <body>
-  <c:if test="${empty username}">
-    Greetings, guest! <a href="/login">(login)</a>
-  </c:if>
-  <c:if test="${not empty username}">
-    Greetings ${username}! <a href="/logout">(logout)</a>
-  </c:if>
+  <%@include file="elements/greeting.jsp" %>
     <table class="newsTable">
       <c:forEach items="${newsList}" var="news">
         <tr>
@@ -42,5 +37,5 @@
       </c:forEach>
     </table>
   </body>
-  <%@include file="html-elements/footer.jsp" %>
+  <%@include file="elements/footer.jsp" %>
 </html>

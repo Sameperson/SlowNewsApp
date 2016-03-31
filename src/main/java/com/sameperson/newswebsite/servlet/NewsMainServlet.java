@@ -14,23 +14,10 @@ import java.io.IOException;
 @WebServlet("")
 public class NewsMainServlet extends HttpServlet {
 
-    private volatile NewsList newsList;
-
-    @Override
-    public void init() throws ServletException {
-        super.init();
-        newsList = NewsList.getInstance();
-        System.out.println("News main servlet initialized");
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/mainPage.jsp");
-
-
-        newsList = NewsList.getInstance();
-        req.setAttribute("newsList", newsList.getList());
+        req.setAttribute("newsList", NewsList.getInstance().getList());
         req.setAttribute("username", req.getSession().getAttribute("username"));
-        requestDispatcher.forward(req, resp);
+        getServletContext().getRequestDispatcher("/WEB-INF/mainPage.jsp").forward(req, resp);
     }
 }

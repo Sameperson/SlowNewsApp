@@ -9,7 +9,7 @@ public class ArchiveList {
     private static ArchiveList instance;
 
 
-    public static ArchiveList getInstance() {
+    public static synchronized ArchiveList getInstance() {
         if(instance ==null) {
             instance = new ArchiveList();
         }

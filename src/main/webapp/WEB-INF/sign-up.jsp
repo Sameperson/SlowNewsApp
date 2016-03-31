@@ -18,12 +18,13 @@
     <ul>
       <li><a href="/">News feed</a></li>
       <li><a href="archive">Archive</a></li>
-      <li><a href="login">Login</a></li>
-      <li><a href="sign-up" class="selected">Sign-Up</a></li>
+      <li><a href="login">Log in</a></li>
+      <li><a href="sign-up" class="selected">Sign up</a></li>
     </ul>
   </nav>
 </header>
 <body>
+<%@include file="elements/greeting.jsp" %>
     <div class="sign-up-form">
         <form name="registrationForm" method="post" action="/sign-up">
             <ul style="list-style-type:none">
@@ -36,6 +37,6 @@
             </ul>
         </form>
     </div>
-    <%@include file="html-elements/footer.jsp" %>
+    <%@include file="elements/footer.jsp" %>
 </body>
 </html>

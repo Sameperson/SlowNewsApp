@@ -16,18 +16,13 @@
         <ul>
             <li><a href="..">News feed</a></li>
             <li><a href="../archive">Archive</a></li>
-            <li><a href="../login">Login</a></li>
-            <li><a href="../sign-up">Sign-Up</a></li>
+            <li><a href="../login">Log in</a></li>
+            <li><a href="../sign-up">Sign up</a></li>
         </ul>
     </nav>
 </header>
 <body>
-<c:if test="${empty username}">
-    Greetings, guest! <a href="/login">(login)</a>
-</c:if>
-<c:if test="${not empty username}">
-    Greetings ${username}! <a href="/logout">(logout)</a>
-</c:if>
+<%@include file="elements/greeting.jsp" %>
     <div>
         <div class="newsPage">
             <div class="newsTitle">
@@ -51,7 +46,5 @@
         </div>
     </div>
 </body>
-<footer>
-    <p><a href="../userlist">List of the users</a></p>
-</footer>
+<%@include file="elements/footer.jsp" %>
 </html>

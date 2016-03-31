@@ -1,5 +1,7 @@
 package com.sameperson.newswebsite.model;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.time.LocalDateTime;
 
 public class UserBean {
@@ -35,6 +37,7 @@ public class UserBean {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = DigestUtils.sha256Hex(password);
     }
+
 }
