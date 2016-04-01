@@ -24,6 +24,6 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserList.getInstance().addUser(req.getParameter("username"), DigestUtils.sha512Hex(req.getParameter("password")));
         req.setAttribute("username", req.getSession().getAttribute("username"));
-        resp.sendRedirect("/sign-up");
+        resp.sendRedirect("/");
     }
 }

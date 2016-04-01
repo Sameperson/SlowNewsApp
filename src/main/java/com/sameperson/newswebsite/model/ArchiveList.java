@@ -32,7 +32,6 @@ public class ArchiveList {
         }
         return false;
     }
-
     protected ArchiveList() {
         newsArchive = new HashMap<>();
     }

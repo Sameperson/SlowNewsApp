@@ -2,10 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <title>Slow News</title>
-    <link rel="stylesheet" href="../resources/css/normalize.css">
+    <link rel="stylesheet" href="/resources/css/normalize.css">
     <link href='http://fonts.googleapis.com/css?family=Changa+One|Open+Sans:400italic,700italic,400,700,800' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../resources/css/main.css">
-    <link rel="stylesheet" href="../resources/css/responsive.css">
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/responsive.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <header>
@@ -14,10 +14,10 @@
     </a>
     <nav>
         <ul>
-            <li><a href="..">News feed</a></li>
-            <li><a href="../archive">Archive</a></li>
-            <li><a href="../login">Log in</a></li>
-            <li><a href="../sign-up">Sign up</a></li>
+            <li><a href="/">News feed</a></li>
+            <li><a href="/archive">Archive</a></li>
+            <li><a href="/login">Log in</a></li>
+            <li><a href="/sign-up">Sign up</a></li>
         </ul>
     </nav>
 </header>
