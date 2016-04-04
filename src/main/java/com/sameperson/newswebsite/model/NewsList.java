@@ -1,6 +1,6 @@
 package com.sameperson.newswebsite.model;
 
-import com.sameperson.newswebsite.controller.NewsGenerator;
+import com.sameperson.newswebsite.logic.NewsGenerator;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class NewsList {
 
     private static NewsList instance;
-    private ArrayList<NewsBean> listOfTheNews;
+    private ArrayList<Article> listOfTheNews;
     private NewsGenerator generator;
 
     public static synchronized NewsList getInstance() {
@@ -19,19 +19,19 @@ public class NewsList {
     }
 
     public synchronized void addNews(String name, String title, String body) {
-        listOfTheNews.add(0, new NewsBean(name, title, body));
+        listOfTheNews.add(0, new Article(name, title, body));
     }
 
-    public synchronized void addNews(NewsBean newsBean) {
+    public synchronized void addNews(Article newsBean) {
         listOfTheNews.add(0, newsBean);
     }
 
-    public ArrayList<NewsBean> getList() {
+    public ArrayList<Article> getList() {
         return listOfTheNews;
     }
 
-    public NewsBean findByName(String name) {
-        for(NewsBean newsBean : listOfTheNews) {
+    public Article findByName(String name) {
+        for(Article newsBean : listOfTheNews) {
             if(newsBean.getName().equals(name)) {
                 return newsBean;
             }

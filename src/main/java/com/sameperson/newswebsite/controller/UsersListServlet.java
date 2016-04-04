@@ -1,4 +1,4 @@
-package com.sameperson.newswebsite.controller.servlet;
+package com.sameperson.newswebsite.controller;
 
 import com.sameperson.newswebsite.model.UserList;
 

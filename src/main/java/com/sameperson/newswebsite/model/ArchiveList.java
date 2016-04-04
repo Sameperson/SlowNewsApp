@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class ArchiveList {
 
-    private HashMap<String, ArrayList<NewsBean>> newsArchive;
+    private HashMap<String, ArrayList<Article>> newsArchive;
     private static ArchiveList instance;
 
 
@@ -16,7 +16,7 @@ public class ArchiveList {
         return instance;
     }
 
-    public ArrayList<NewsBean> getUsersArchive(String user) {
+    public ArrayList<Article> getUsersArchive(String user) {
         if(!newsArchive.containsKey(user)) {
             newsArchive.put(user, new ArrayList<>());
         }
@@ -25,7 +25,7 @@ public class ArchiveList {
     }
 
     public boolean hasNewsInArchive(String user, String name) {
-        for(NewsBean newsBean : getUsersArchive(user)) {
+        for(Article newsBean : getUsersArchive(user)) {
             if(newsBean.getName().equals(name)) {
                 return true;
             }

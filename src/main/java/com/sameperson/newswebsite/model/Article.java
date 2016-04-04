@@ -2,18 +2,18 @@ package com.sameperson.newswebsite.model;
 
 import java.time.LocalDateTime;
 
-public class NewsBean {
+public class Article {
 
     private String name;
     private String title;
     private String body;
     private LocalDateTime timeOfPublication;
 
-    public NewsBean() {
+    public Article() {
         this.refreshTime();
     }
 
-    public NewsBean(String name, String title, String newsBody) {
+    public Article(String name, String title, String newsBody) {
         this.refreshTime();
         this.name = name;
         this.title = title;

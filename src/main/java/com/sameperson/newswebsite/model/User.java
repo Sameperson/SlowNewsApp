@@ -4,17 +4,17 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import java.time.LocalDateTime;
 
-public class UserBean {
+public class User {
 
     private String username;
     private String password;
     private LocalDateTime timeOfRegistration;
 
-    public UserBean() {
+    public User() {
         timeOfRegistration = LocalDateTime.now();
     }
 
-    public UserBean(String username, String password) {
+    public User(String username, String password) {
         timeOfRegistration = LocalDateTime.now();
         this.username = username;
         this.password = password;

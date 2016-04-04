@@ -1,4 +1,4 @@
-package com.sameperson.newswebsite.controller.servlet.helper;
+package com.sameperson.newswebsite.controller.helper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

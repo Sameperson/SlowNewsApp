@@ -1,8 +1,8 @@
-package com.sameperson.newswebsite.controller.servlet;
+package com.sameperson.newswebsite.controller;
 
 
 import com.sameperson.newswebsite.model.ArchiveList;
-import com.sameperson.newswebsite.model.NewsBean;
+import com.sameperson.newswebsite.model.Article;
 import com.sameperson.newswebsite.model.NewsList;
 
 import javax.servlet.RequestDispatcher;
@@ -24,7 +24,7 @@ public class SingleNewsServlet extends HttpServlet {
 
         String newsUri = req.getPathInfo();
         String newsName = newsUri.substring(1, newsUri.length());
-        NewsBean newsInstance = NewsList.getInstance().findByName(newsName);
+        Article newsInstance = NewsList.getInstance().findByName(newsName);
         String username = (String)req.getSession().getAttribute("username");
         req.setAttribute("newsInstance", newsInstance);
         req.setAttribute("username", username);
@@ -36,7 +36,7 @@ public class SingleNewsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        NewsBean newsBean = NewsList.getInstance().findByName(req.getParameter("name"));
+        Article newsBean = NewsList.getInstance().findByName(req.getParameter("name"));
         String username = (String)req.getSession().getAttribute("username");
         ArchiveList.getInstance().getUsersArchive(username).add(newsBean);
         resp.sendRedirect("/");

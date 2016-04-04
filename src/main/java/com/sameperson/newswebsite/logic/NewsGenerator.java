@@ -1,6 +1,6 @@
-package com.sameperson.newswebsite.controller;
+package com.sameperson.newswebsite.logic;
 
-import com.sameperson.newswebsite.model.NewsBean;
+import com.sameperson.newswebsite.model.Article;
 
 import java.util.Random;
 
@@ -17,8 +17,8 @@ public class NewsGenerator {
     private String[] adjectives = {"kind", "white", "black", "depressed", "evil", "generous", "infamous", "large", "tiny", "expensive", "cheap", "cruel", "chinese", "bored", "famous", "forgotten",
             "naive", "talented", "poor"};
 
-    public NewsBean generateNews() {
-        return new NewsBean(generateName(), getRandomSentence(),  generateBody());
+    public Article generateNews() {
+        return new Article(generateName(), getRandomSentence(),  generateBody());
     }
 
     private String generateBody() {
