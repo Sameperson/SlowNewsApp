@@ -1,8 +1,7 @@
-package com.sameperson.newswebsite.servlet;
+package com.sameperson.newswebsite.controller.servlet;
 
 import com.sameperson.newswebsite.model.NewsList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

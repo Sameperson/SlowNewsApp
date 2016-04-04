@@ -1,5 +1,7 @@
 package com.sameperson.newswebsite.model;
 
+import com.sameperson.newswebsite.controller.NewsGenerator;
+
 import java.util.ArrayList;
 
 

@@ -1,4 +1,6 @@
-package com.sameperson.newswebsite.model;
+package com.sameperson.newswebsite.controller;
+
+import com.sameperson.newswebsite.model.NewsBean;
 
 import java.util.Random;
 

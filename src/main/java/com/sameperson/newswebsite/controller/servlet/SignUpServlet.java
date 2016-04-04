@@ -1,4 +1,4 @@
-package com.sameperson.newswebsite.servlet;
+package com.sameperson.newswebsite.controller.servlet;
 
 import com.sameperson.newswebsite.model.UserList;
 import org.apache.commons.codec.digest.DigestUtils;

@@ -1,10 +1,7 @@
-package com.sameperson.newswebsite.servlet.filter;
-
-import com.sameperson.newswebsite.model.UserList;
+package com.sameperson.newswebsite.controller.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 
