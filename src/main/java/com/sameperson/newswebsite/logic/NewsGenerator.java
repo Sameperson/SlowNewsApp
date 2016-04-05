@@ -30,7 +30,7 @@ public class NewsGenerator {
         return sb.toString();
     }
 
-    private String generateName() {
+    public String generateName() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < 20; i++) {
             char c = chars[random.nextInt(chars.length)];

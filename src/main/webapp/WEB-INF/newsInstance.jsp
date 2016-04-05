@@ -28,12 +28,15 @@
             <div class="newsTitle">
                 ${newsInstance.title}
             </div>
+            <div>
+                ${newsInstance.pubDate}
+            </div>
             <div class="newsImage">
                 <img src="/resources/images/${newsInstance.name}.jpg"
                      alt="${newsInstance.name}" height="420">
             </div>
             <div class="newsBody">
-                ${newsInstance.body}
+                ${newsInstance.description}
             </div>
             <c:if test="${(not empty username) && (not hideArchiveButton)}">
                 <form name="news" method="post" action="/news/">

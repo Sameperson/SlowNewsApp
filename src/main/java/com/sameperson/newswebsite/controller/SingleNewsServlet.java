@@ -31,6 +31,7 @@ public class SingleNewsServlet extends HttpServlet {
         if(ArchiveList.getInstance().hasNewsInArchive(username, newsInstance.getName())) {
             req.setAttribute("hideArchiveButton", true);
         }
+        System.out.println(NewsList.getInstance().toString());
         requestDispatcher.forward(req, resp);
     }
 

@@ -1,23 +1,26 @@
 package com.sameperson.newswebsite.model;
 
-import java.time.LocalDateTime;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name="item")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Article {
 
     private String name;
     private String title;
-    private String body;
-    private LocalDateTime timeOfPublication;
+    private String description;
+    private String pubDate;
 
     public Article() {
-        this.refreshTime();
+        setName();
     }
 
     public Article(String name, String title, String newsBody) {
-        this.refreshTime();
         this.name = name;
         this.title = title;
-        this.body = newsBody;
+        this.description = newsBody;
     }
 
     public String getTitle() {
@@ -28,32 +31,28 @@ public class Article {
         this.title = title;
     }
 
-    public String getBody() {
-        return body;
+    public String getDescription() {
+        return description;
     }
 
     public void setNewsBody(String newsBody) {
-        this.body = newsBody;
+        this.description = newsBody;
     }
 
-    public void setCurrentTime() {
-        this.refreshTime();
+    public String getPubTime() {
+        return pubDate.substring(16, pubDate.length()-7);
     }
 
-    public String getTimeOnly() {
-        return String.format("%02d:%02d", timeOfPublication.getHour(), timeOfPublication.getMinute());
+    public String getPubDate() {
+        return pubDate;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName() {
+        this.name = this.title;
     }
 
     public String getName() {
-        return name;
-    }
-
-    private void refreshTime() {
-        this.timeOfPublication = LocalDateTime.now();
+        return title;
     }
 
     @Override

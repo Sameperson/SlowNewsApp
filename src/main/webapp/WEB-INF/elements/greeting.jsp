@@ -4,3 +4,5 @@
 <c:if test="${not empty username}">
   Greetings <b>${username}</b>! <a href="/logout">(logout)</a>
 </c:if>
+
+<div class="weather">${weather}</div>
