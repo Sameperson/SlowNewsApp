@@ -29,7 +29,7 @@
   <c:forEach items="${newsList}" var="news">
     <tr>
       <td class=time>
-        <c:out value="${news.timeOnly}" />
+        <c:out value="${news.pubTime}" />
       </td>
       <td class=newsInstance>
         <a href="news/<c:out value="${news.name}" />"><c:out value="${news.title}" /></a>
