@@ -32,13 +32,12 @@ public class RequestFilter implements Filter {
             weatherCurrently = getCurrentWeather();
         }
         servletReq.setAttribute("weather", "Weather in Kiev: " + weatherCurrently.getString("summary") +
-                "    " + (long) Math.floor(((weatherCurrently.getDouble("temperature") - 32) * 5) / 9 + 0.5d) + "\u00b0");
+                "    " + weatherCurrently.getDouble("temperature") + "\u00b0");
         filterChain.doFilter(servletReq, servletResp);
     }
 
     private JSONObject getCurrentWeather() {
-        return new JSONObject(client.target("https://api.forecast.io/forecast/")
-                .path("ccc9e70f9fbe7b36c2ceea0201205811/50.450100,30.523400")
+        return new JSONObject(client.target("https://api.forecast.io/forecast/ccc9e70f9fbe7b36c2ceea0201205811/50.450100,30.523400?units=si")
                 .request(MediaType.APPLICATION_JSON)
                 .get(String.class))
                 .getJSONObject("currently");
