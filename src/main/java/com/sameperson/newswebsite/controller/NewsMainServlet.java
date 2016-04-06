@@ -1,5 +1,6 @@
 package com.sameperson.newswebsite.controller;
 
+import com.sameperson.newswebsite.logic.NewsUnmarshaller;
 import com.sameperson.newswebsite.model.NewsList;
 import com.sun.org.apache.xpath.internal.SourceTree;
 
@@ -14,22 +15,28 @@ import javax.xml.bind.Unmarshaller;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @WebServlet("")
 public class NewsMainServlet extends HttpServlet {
 
+    private long currentTime;
+    NewsList list = NewsList.getInstance();
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        currentTime = System.currentTimeMillis();
+        NewsUnmarshaller.unmarshal(list);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        NewsList list = NewsList.getInstance();
-        try {
-            list = (NewsList)JAXBContext.newInstance(NewsList.class)
-                    .createUnmarshaller()
-                    .unmarshal(new URL("https://rss.sciencedaily.com/all.xml"));
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+        if(System.currentTimeMillis()-currentTime>60000) {
+            currentTime = System.currentTimeMillis();
+            NewsUnmarshaller.unmarshal(list);
         }
         System.out.println(list.toString());
         req.setAttribute("newsList", list.getList());
