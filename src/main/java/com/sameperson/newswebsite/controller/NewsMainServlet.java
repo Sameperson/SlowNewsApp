@@ -23,7 +23,7 @@ import java.util.Date;
 public class NewsMainServlet extends HttpServlet {
 
     private long currentTime;
-    NewsList list = NewsList.getInstance();
+    private NewsList list = NewsList.getInstance();
 
     @Override
     public void init() throws ServletException {
