@@ -28,7 +28,7 @@ public class RequestFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletReq, ServletResponse servletResp, FilterChain filterChain)
             throws IOException, ServletException {
-        if (System.currentTimeMillis() - currentTime > 60000) {
+        if (System.currentTimeMillis() - currentTime > 600000) {
             weatherCurrently = getCurrentWeather();
         }
         servletReq.setAttribute("weather", "Weather in Kiev: " + weatherCurrently.getString("summary") +

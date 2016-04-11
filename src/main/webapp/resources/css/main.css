@@ -19,6 +19,16 @@ h3 {
   margin: 0 0 1em 0;
 }
 
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+th, td {
+    overflow: hidden;
+    width: 100px;
+}
+
 /****************************
 COLORS
 *****************************/
@@ -45,6 +55,10 @@ nav {
     background: #000000;
 }
 
+.clickable-title:hover {
+    color: #a43800;
+    cursor: pointer;
+}
 
 nav a.selected, nav a:hover {
     color: #FF5500;
@@ -77,6 +91,7 @@ MAIN PAGE NEWS LIST
   padding: 10px;
   background-color: #bbbdbe;
   color: #000000;
+  width: 82%;
 }
 
 
@@ -85,6 +100,11 @@ MAIN PAGE NEWS LIST
   padding-left: 10px;
   color: #fff;
   background-color: #dd0000;
+  width: 18%;
+}
+
+.hideableBody {
+    background-color: #cfd1d2;
 }
 
 /****************************

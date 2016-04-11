@@ -1,4 +1,4 @@
-@media screen and (min-width: 660px)  {
+@media screen and (min-width: 880px)  {
 
 /****************************
 HEADER
@@ -32,6 +32,18 @@ HEADER
   header {
     border-bottom: #000000;
     margin-bottom: 30px;
+  }
+
+  table {
+    width: 65%;
+  }
+
+  .time {
+      width: 10%;
+  }
+
+  .newsInstance {
+      width: 90%;
   }
 
 /****************************
