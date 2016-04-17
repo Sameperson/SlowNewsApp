@@ -1,4 +1,6 @@
-package com.sameperson.newswebsite.model;
+package com.sameperson.newswebsite.logic;
+
+import com.sameperson.newswebsite.model.Article;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
@@ -6,18 +8,18 @@ import java.util.Collections;
 
 @XmlRootElement(name = "rss")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(factoryClass=NewsList.class, factoryMethod="getInstance")
-public class NewsList {
+@XmlType(factoryClass=NewsListForUnmarshaller.class, factoryMethod="getInstance")
+public class NewsListForUnmarshaller {
 
-    private static NewsList instance;
+    private static NewsListForUnmarshaller instance;
 
     @XmlElementWrapper(name = "channel")
     @XmlElement(name = "item")
     private ArrayList<Article> listOfTheNews;
 
-    public static synchronized NewsList getInstance() {
+    public static synchronized NewsListForUnmarshaller getInstance() {
         if(instance == null) {
-            instance = new NewsList();
+            instance = new NewsListForUnmarshaller();
         }
         System.out.println("Getting instance...");
         return instance;
@@ -45,7 +47,7 @@ public class NewsList {
         return null;
     }
 
-    public NewsList() {
+    public NewsListForUnmarshaller() {
         System.out.println("Creating new news list instance!");
         listOfTheNews = new ArrayList<>();
     }

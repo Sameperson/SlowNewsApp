@@ -1,22 +1,11 @@
 package com.sameperson.newswebsite.controller;
 
-import com.sameperson.newswebsite.logic.NewsUnmarshaler;
-import com.sameperson.newswebsite.model.NewsList;
-import com.sameperson.newswebsite.model.database.UserDatabase;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 
 @WebServlet("")

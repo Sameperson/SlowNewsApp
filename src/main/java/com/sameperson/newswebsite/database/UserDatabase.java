@@ -1,4 +1,4 @@
-package com.sameperson.newswebsite.model.database;
+package com.sameperson.newswebsite.database;
 
 import com.sameperson.newswebsite.model.Article;
 import com.sameperson.newswebsite.model.User;
@@ -37,7 +37,7 @@ public class UserDatabase {
         return users;
     }
 
-    public static int save(User user) {
+    public static synchronized int save(User user) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Integer id = (Integer)session.save(user);
@@ -74,7 +74,7 @@ public class UserDatabase {
         return user;
     }
 
-    public static void addNewsToUsersArchive(User user, Article article) {
+    public static synchronized void addNewsToUsersArchive(User user, Article article) {
         user.getArchive().add(NewsDatabase.getNews(article.getTitle()));
         update(user);
     }

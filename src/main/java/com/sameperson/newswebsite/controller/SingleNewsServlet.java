@@ -2,9 +2,8 @@ package com.sameperson.newswebsite.controller;
 
 
 import com.sameperson.newswebsite.model.Article;
-import com.sameperson.newswebsite.model.NewsList;
-import com.sameperson.newswebsite.model.database.NewsDatabase;
-import com.sameperson.newswebsite.model.database.UserDatabase;
+import com.sameperson.newswebsite.database.NewsDatabase;
+import com.sameperson.newswebsite.database.UserDatabase;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

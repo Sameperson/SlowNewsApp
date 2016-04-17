@@ -1,4 +1,4 @@
-package com.sameperson.newswebsite.model.database;
+package com.sameperson.newswebsite.database;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;

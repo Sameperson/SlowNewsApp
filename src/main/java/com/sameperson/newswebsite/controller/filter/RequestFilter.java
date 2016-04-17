@@ -1,9 +1,8 @@
 package com.sameperson.newswebsite.controller.filter;
 
-import com.sameperson.newswebsite.logic.NewsUnmarshaler;
-import com.sameperson.newswebsite.model.Article;
-import com.sameperson.newswebsite.model.NewsList;
-import com.sameperson.newswebsite.model.database.NewsDatabase;
+import com.sameperson.newswebsite.logic.NewsUnmarshaller;
+import com.sameperson.newswebsite.logic.NewsListForUnmarshaller;
+import com.sameperson.newswebsite.database.NewsDatabase;
 import org.json.JSONObject;
 
 import javax.servlet.*;
@@ -11,11 +10,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @WebFilter("/*")
@@ -24,14 +20,14 @@ public class RequestFilter implements Filter {
     private long currentTime;
     private Client client;
     private JSONObject weatherCurrently;
-    private NewsList list = NewsList.getInstance();
+    private NewsListForUnmarshaller list = NewsListForUnmarshaller.getInstance();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         client = ClientBuilder.newClient();
         currentTime = System.currentTimeMillis();
         weatherCurrently = getCurrentWeather();
-        NewsUnmarshaler.unmarshal(list);
+        NewsUnmarshaller.unmarshal(list);
         addNewsToDatabase(list);
         System.out.println("List length: " + list.getList().size());
     }
@@ -42,7 +38,7 @@ public class RequestFilter implements Filter {
         if (System.currentTimeMillis() - currentTime > 600000) {
             currentTime = System.currentTimeMillis();
             weatherCurrently = getCurrentWeather();
-            NewsUnmarshaler.unmarshal(list);
+            NewsUnmarshaller.unmarshal(list);
             addNewsToDatabase(list);
             System.out.println("Refreshing news...");
         }
@@ -60,7 +56,7 @@ public class RequestFilter implements Filter {
                 .getJSONObject("currently");
     }
 
-    private void addNewsToDatabase(NewsList newsList) {
+    private void addNewsToDatabase(NewsListForUnmarshaller newsList) {
         newsList.getList().stream().filter(article -> !NewsDatabase
                 .containsArticle(article.getTitle()))
                 .forEach(NewsDatabase::save);

@@ -1,4 +1,4 @@
-package com.sameperson.newswebsite.model.database;
+package com.sameperson.newswebsite.database;
 
 import com.sameperson.newswebsite.model.Article;
 import com.sameperson.newswebsite.model.User;
@@ -8,9 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 public class NewsDatabase {
@@ -41,7 +38,7 @@ public class NewsDatabase {
         return news;
     }
 
-    public static int save(Article article) {
+    public synchronized static int save(Article article) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Integer id = (Integer)session.save(article);

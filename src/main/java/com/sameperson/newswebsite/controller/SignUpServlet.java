@@ -1,7 +1,7 @@
 package com.sameperson.newswebsite.controller;
 
 import com.sameperson.newswebsite.model.User;
-import com.sameperson.newswebsite.model.database.UserDatabase;
+import com.sameperson.newswebsite.database.UserDatabase;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.RequestDispatcher;

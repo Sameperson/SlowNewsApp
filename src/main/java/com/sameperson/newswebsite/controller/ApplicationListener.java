@@ -10,7 +10,7 @@ public class ApplicationListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent event) {
         try {
-            Class.forName("com.sameperson.newswebsite.model.database.HibernateSessionFactoryProvider");
+            Class.forName("com.sameperson.newswebsite.database.HibernateSessionFactoryProvider");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
