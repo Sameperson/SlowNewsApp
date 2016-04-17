@@ -5,7 +5,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import java.time.LocalDateTime;
 
 public class User {
-
+    private String id;
     private String username;
     private String password;
     private LocalDateTime timeOfRegistration;

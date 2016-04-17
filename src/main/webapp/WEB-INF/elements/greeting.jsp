@@ -6,7 +6,7 @@
 </c:if>
 
 <div class="weather">${weather}</div>
-<div><audio controls autoplay>
+<div><audio controls>
   <source src="/resources/audio/we_can_dance.mp3"  type="audio/mpeg">
   Your browser does not support the audio element.
 </audio></div>

@@ -2,6 +2,7 @@ package com.sameperson.newswebsite.controller;
 
 import com.sameperson.newswebsite.logic.NewsUnmarshaler;
 import com.sameperson.newswebsite.model.NewsList;
+import com.sameperson.newswebsite.model.database.UserDatabase;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,9 @@ import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 @WebServlet("")
