@@ -1,6 +1,5 @@
 package com.sameperson.newswebsite.controller;
 
-import com.sameperson.newswebsite.model.UserList;
 import com.sameperson.newswebsite.model.database.UserDatabase;
 
 import javax.servlet.ServletException;

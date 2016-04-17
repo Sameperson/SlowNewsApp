@@ -1,6 +1,5 @@
 package com.sameperson.newswebsite.controller;
 
-import com.sameperson.newswebsite.model.ArchiveList;
 import com.sameperson.newswebsite.model.User;
 import com.sameperson.newswebsite.model.database.UserDatabase;
 

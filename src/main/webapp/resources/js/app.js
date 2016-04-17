@@ -18,6 +18,7 @@ $(function () {
         });
     });
 
+
     $('.header-link a, .logo, #user-list-link').click(function (event) {
         event.preventDefault();
         $.ajax({
