@@ -1,7 +1,6 @@
 package com.sameperson.newswebsite.controller;
 
 
-import com.sameperson.newswebsite.model.ArchiveList;
 import com.sameperson.newswebsite.model.Article;
 import com.sameperson.newswebsite.model.NewsList;
 import com.sameperson.newswebsite.model.database.NewsDatabase;
@@ -29,19 +28,19 @@ public class SingleNewsServlet extends HttpServlet {
         String username = (String)req.getSession().getAttribute("username");
         req.setAttribute("newsInstance", newsInstance);
         req.setAttribute("username", username);
-//        if(ArchiveList.getInstance().hasNewsInArchive(username, newsInstance.getName())) {
-//            req.setAttribute("hideArchiveButton", true);
-//        }
-        requestDispatcher.forward(req, resp);
+        System.out.println("test:"+username);
+        if(username!=null && UserDatabase.hasNewsInArchive(UserDatabase.getUser(username), newsInstance)) {
+            req.setAttribute("hideArchiveButton", true);
+            requestDispatcher.forward(req, resp);
+        } else {
+            requestDispatcher.forward(req, resp);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UserDatabase.addNewsToUsersArchive(UserDatabase.getUser((String)req.getSession().getAttribute("username")),
                 NewsDatabase.getNews(req.getParameter("name")));
-        //Article newsBean = NewsDatabase.getNews(req.getParameter("name"));
-        //String username = (String)req.getSession().getAttribute("username");
-        //ArchiveList.getInstance().getUsersArchive(username).add(newsBean);
         resp.sendRedirect("/");
     }
 }

@@ -18,7 +18,6 @@
         <c:if test="${(not empty username) && (not hideArchiveButton)}">
             <form name="news" method="post" action="/news/">
                 <input type="hidden" name="name" value="${newsInstance.title}">
-
                 <div>
                     <input type="submit" value="Archive">
                 </div>

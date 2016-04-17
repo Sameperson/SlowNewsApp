@@ -27,16 +27,5 @@ public class LoginServlet extends HttpServlet {
             req.getSession().setAttribute("username", usernameFromPost);
         }
         resp.sendRedirect("/");
-
-//        UserList userList = UserList.getInstance();
-//        String usernameFromPost = req.getParameter("username");
-//        if(userList.containsUser(usernameFromPost)
-//                && userList.findByName(usernameFromPost).getPassword()
-//                .equals(DigestUtils.sha512Hex(req.getParameter("password")))) {
-//            req.getSession().setAttribute("username", usernameFromPost);
-//            resp.sendRedirect("/");
-//        } else {
-//            resp.sendRedirect("/login");
-//        }
     }
 }

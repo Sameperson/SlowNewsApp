@@ -78,4 +78,13 @@ public class UserDatabase {
         user.getArchive().add(NewsDatabase.getNews(article.getTitle()));
         update(user);
     }
+
+    public static boolean hasNewsInArchive(User user, Article news) {
+        for(Article article : user.getArchive()) {
+            if(article.getTitle().equals(news.getTitle())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -7,7 +7,7 @@
                 <c:out value="${news.pubTime}"/>
             </td>
             <td class=newsInstance>
-                <a href="news/<c:out value="${news.name}" />"><c:out value='${news.title}'/></a>
+                <a href="news/${news.name}" class="article-link"><c:out value='${news.title}'/></a>
             </td>
         </tr>
     </c:forEach>

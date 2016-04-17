@@ -2,6 +2,7 @@ package com.sameperson.newswebsite.model;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 @XmlRootElement(name = "rss")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -31,6 +32,7 @@ public class NewsList {
     }
 
     public ArrayList<Article> getList() {
+        Collections.reverse(listOfTheNews);
         return listOfTheNews;
     }
 
