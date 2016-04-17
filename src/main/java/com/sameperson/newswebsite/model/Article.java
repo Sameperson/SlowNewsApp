@@ -1,21 +1,25 @@
 package com.sameperson.newswebsite.model;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="item")
+@Entity
+@XmlRootElement(name = "item")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Article {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(unique = true)
     private String name;
     private String title;
+    @Lob
     private String description;
     private String pubDate;
 
-    public Article() {
-        setName();
-    }
+    public Article() { }
 
     public Article(String name, String title, String newsBody) {
         this.name = name;
@@ -23,12 +27,25 @@ public class Article {
         this.description = newsBody;
     }
 
-    public String getTitle() {
-        return title;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
         this.title = title;
+        this.name = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDescription() {
@@ -39,16 +56,20 @@ public class Article {
         this.description = newsBody;
     }
 
+    public void setPubDate(String pubDate) {
+        this.pubDate = pubDate;
+    }
+
     public String getPubTime() {
-        return pubDate.substring(16, pubDate.length()-7);
+        return pubDate.substring(16, pubDate.length() - 7);
     }
 
     public String getPubDate() {
         return pubDate;
     }
 
-    public void setName() {
-        this.name = this.title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {

@@ -1,49 +1,62 @@
 package com.sameperson.newswebsite.model.database;
 
+import com.sameperson.newswebsite.model.Article;
 import com.sameperson.newswebsite.model.User;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.util.List;
 
 public class UserDatabase {
 
-    private volatile static Connection connection;
-    static  {
-        try {
-            connection = ConnectionManager.getConnection();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS users (id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY, username VARCHAR(255), password VARCHAR(128))");
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        }
+    private static SessionFactory sessionFactory = HibernateSessionFactoryProvider.SESSION_FACTORY;
+
+    public User getUserById(int id) {
+        Session session = sessionFactory.openSession();
+        User user = session.get(User.class, id);
+        session.close();
+        return user;
     }
 
-    public static void saveUser(User user) {
-        String sql = "INSERT INTO users (username, password) VALUES ('%s', '%s')";
-        sql = String.format(sql, user.getUsername(), user.getPassword());
-        try {
-            connection.createStatement().executeUpdate(sql);
-            System.out.println("User " + user.getUsername() + " has been saved into database");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public static void update(User user) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(user);
+        session.getTransaction().commit();
+        session.close();
     }
 
-    public static ArrayList<User> getUsers() {
-        ArrayList<User> userList = new ArrayList<>();
-        try {
-            ResultSet resultSet = connection.createStatement().executeQuery("SELECT * FROM users");
-            while(resultSet.next()) {
-                userList.add(new User(resultSet.getString("username"), resultSet.getString("password")));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return userList;
+    @SuppressWarnings("unchecked")
+    public static List<User> fetchAllUsers() {
+        Session session = sessionFactory.openSession();
+        List<User> users = session.createCriteria(User.class)
+                .list();
+        session.close();
+        return users;
     }
 
-    public static boolean containsUser(String username) {
-        for(User user : getUsers()) {
+    public static int save(User user) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        Integer id = (Integer)session.save(user);
+        session.getTransaction().commit();
+        session.close();
+        System.out.println("User "+user.getUsername()+" added!");
+        return id;
+    }
+
+    public static void delete(User user) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(user);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public static boolean containsUsername(String username) {
+        for(User user : fetchAllUsers()) {
             if(user.getUsername().equals(username)) {
                 return true;
             }
@@ -51,27 +64,18 @@ public class UserDatabase {
         return false;
     }
 
-    public static void printUsers() {
-        ResultSet resultSet = null;
-        try {
-            resultSet = connection.createStatement().executeQuery("SELECT * FROM users");
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String firstname = resultSet.getString("username");
-                String lastname = resultSet.getString("password");
-                System.out.printf("%s %s (%d) \n", firstname, lastname, id);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public static User getUser(String username) {
+        Session session = sessionFactory.openSession();
+        Criteria criteria = session.createCriteria(User.class);
+        criteria.add(Restrictions.eq("username", username));
+        System.out.println("Getting user...");
+        User user = (User)criteria.uniqueResult();
+        session.close();
+        return user;
     }
 
-    public static void dropTable() {
-        try {
-            connection.createStatement().executeUpdate("DROP TABLE users");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public static void addNewsToUsersArchive(User user, Article article) {
+        user.getArchive().add(NewsDatabase.getNews(article.getTitle()));
+        update(user);
     }
-
 }

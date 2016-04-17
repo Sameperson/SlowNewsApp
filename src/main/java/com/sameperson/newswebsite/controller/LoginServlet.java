@@ -1,6 +1,7 @@
 package com.sameperson.newswebsite.controller;
 
 import com.sameperson.newswebsite.model.UserList;
+import com.sameperson.newswebsite.model.database.UserDatabase;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.ServletException;
@@ -19,15 +20,23 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserList userList = UserList.getInstance();
         String usernameFromPost = req.getParameter("username");
-        if(userList.containsUser(usernameFromPost)
-                && userList.findByName(usernameFromPost).getPassword()
+        if(UserDatabase.containsUsername(usernameFromPost)
+                && UserDatabase.getUser(usernameFromPost).getPassword()
                 .equals(DigestUtils.sha512Hex(req.getParameter("password")))) {
             req.getSession().setAttribute("username", usernameFromPost);
-            resp.sendRedirect("/");
-        } else {
-            resp.sendRedirect("/login");
         }
+        resp.sendRedirect("/");
+
+//        UserList userList = UserList.getInstance();
+//        String usernameFromPost = req.getParameter("username");
+//        if(userList.containsUser(usernameFromPost)
+//                && userList.findByName(usernameFromPost).getPassword()
+//                .equals(DigestUtils.sha512Hex(req.getParameter("password")))) {
+//            req.getSession().setAttribute("username", usernameFromPost);
+//            resp.sendRedirect("/");
+//        } else {
+//            resp.sendRedirect("/login");
+//        }
     }
 }

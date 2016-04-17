@@ -1,6 +1,7 @@
 package com.sameperson.newswebsite.controller;
 
 import com.sameperson.newswebsite.model.UserList;
+import com.sameperson.newswebsite.model.database.UserDatabase;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +15,7 @@ public class UsersListServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("userList", UserList.getInstance().getList());
+        req.setAttribute("userList", UserDatabase.fetchAllUsers());
         getServletContext().getRequestDispatcher("/WEB-INF/userList.jsp").forward(req, resp);
     }
 }

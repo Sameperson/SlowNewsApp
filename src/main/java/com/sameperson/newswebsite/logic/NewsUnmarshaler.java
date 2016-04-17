@@ -14,6 +14,7 @@ public class NewsUnmarshaler {
             newsList = (NewsList) JAXBContext.newInstance(NewsList.class)
                     .createUnmarshaller()
                     .unmarshal(new URL("https://rss.sciencedaily.com/all.xml"));
+            System.out.println("Unmarshalling...");
             return true;
         } catch (JAXBException e) {
             return false;

@@ -15,7 +15,8 @@
     <tr class="newsInstance">
       <td colspan="2">
         <div class="hideableBody" id="hideable-from-clickable${count}">
-            ${news.description}<br>
+              ${news.description}<br>
+              <a href="news/${news.title}" class="article-link"/><b>Read more</b></a>
         </div>
       </td>
     </tr>

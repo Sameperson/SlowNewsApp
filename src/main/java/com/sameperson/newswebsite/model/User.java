@@ -2,26 +2,33 @@ package com.sameperson.newswebsite.model;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import java.time.LocalDateTime;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 public class User {
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(unique = true)
     private String username;
+    @Column
     private String password;
-    private LocalDateTime timeOfRegistration;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade={CascadeType.ALL})
+    private List<Article> archivedArticles = new ArrayList<>();
 
     public User() {
-        timeOfRegistration = LocalDateTime.now();
     }
 
     public User(String username, String password) {
-        timeOfRegistration = LocalDateTime.now();
         this.username = username;
         this.password = password;
     }
 
-    public String getDate() {
-        return String.format("%02d:%02d:%02d", timeOfRegistration.getHour(), timeOfRegistration.getMinute(),  timeOfRegistration.getSecond());
+    public List<Article> getArchive() {
+       return this.archivedArticles;
     }
 
     public String getUsername() {
@@ -38,6 +45,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = DigestUtils.sha256Hex(password);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

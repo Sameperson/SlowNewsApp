@@ -4,6 +4,7 @@ import com.sameperson.newswebsite.model.User;
 import com.sameperson.newswebsite.model.database.UserDatabase;
 import com.sameperson.newswebsite.model.UserList;
 import org.apache.commons.codec.digest.DigestUtils;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,15 +25,13 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getParameter("username").equals("drop")) {
-            UserDatabase.dropTable();
-        } else {
-            UserList.getInstance().addUser(req.getParameter("username"), DigestUtils.sha512Hex(req.getParameter("password")));
-            UserDatabase.saveUser(new User(req.getParameter("username"), DigestUtils.sha512Hex(req.getParameter("password"))));
-            UserDatabase.printUsers();
+
+        //UserList.getInstance().addUser(req.getParameter("username"), DigestUtils.sha512Hex(req.getParameter("password")));
+        String username = req.getParameter("username");
+        if(!UserDatabase.containsUsername(username)) {
+            UserDatabase.save(new User(req.getParameter("username"), DigestUtils.sha512Hex(req.getParameter("password"))));
             req.setAttribute("username", req.getSession().getAttribute("username"));
         }
         resp.sendRedirect("/");
-
     }
 }
