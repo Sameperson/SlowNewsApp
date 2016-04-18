@@ -7,11 +7,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class UserDatabase {
 
-    private static SessionFactory sessionFactory = HibernateSessionFactoryProvider.SESSION_FACTORY;
+    private SessionFactory sessionFactory = HibernateSessionFactoryProvider.SESSION_FACTORY;
 
     public User getUserById(int id) {
         Session session = sessionFactory.openSession();
@@ -20,7 +22,7 @@ public class UserDatabase {
         return user;
     }
 
-    public static void update(User user) {
+    public void update(User user) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.update(user);
@@ -29,15 +31,16 @@ public class UserDatabase {
     }
 
     @SuppressWarnings("unchecked")
-    public static List<User> fetchAllUsers() {
+    public List<User> fetchAllUsers() {
         Session session = sessionFactory.openSession();
-        List<User> users = session.createCriteria(User.class)
-                .list();
+        Criteria criteria = session.createCriteria(User.class);
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        List<User> users = criteria.list();
         session.close();
         return users;
     }
 
-    public static synchronized int save(User user) {
+    public synchronized int save(User user) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         Integer id = (Integer)session.save(user);
@@ -47,7 +50,7 @@ public class UserDatabase {
         return id;
     }
 
-    public static void delete(User user) {
+    public void delete(User user) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.delete(user);
@@ -55,7 +58,7 @@ public class UserDatabase {
         session.close();
     }
 
-    public static boolean containsUsername(String username) {
+    public boolean containsUsername(String username) {
         for(User user : fetchAllUsers()) {
             if(user.getUsername().equals(username)) {
                 return true;
@@ -64,7 +67,7 @@ public class UserDatabase {
         return false;
     }
 
-    public static User getUser(String username) {
+    public User getUser(String username) {
         Session session = sessionFactory.openSession();
         Criteria criteria = session.createCriteria(User.class);
         criteria.add(Restrictions.eq("username", username));
@@ -74,12 +77,12 @@ public class UserDatabase {
         return user;
     }
 
-    public static synchronized void addNewsToUsersArchive(User user, Article article) {
+    public synchronized void addNewsToUsersArchive(User user, Article article) {
         user.getArchive().add(NewsDatabase.getNews(article.getTitle()));
         update(user);
     }
 
-    public static boolean hasNewsInArchive(User user, Article news) {
+    public boolean hasNewsInArchive(User user, Article news) {
         for(Article article : user.getArchive()) {
             if(article.getTitle().equals(news.getTitle())) {
                 return true;

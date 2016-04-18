@@ -20,6 +20,7 @@ public class SingleNewsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/newsInstance.jsp");
+        UserDatabase userDatabase = new UserDatabase();
 
         String newsUri = req.getPathInfo();
         String newsName = newsUri.substring(1, newsUri.length());
@@ -28,7 +29,7 @@ public class SingleNewsServlet extends HttpServlet {
         req.setAttribute("newsInstance", newsInstance);
         req.setAttribute("username", username);
         System.out.println("test:"+username);
-        if(username!=null && UserDatabase.hasNewsInArchive(UserDatabase.getUser(username), newsInstance)) {
+        if(username!=null && userDatabase.hasNewsInArchive(userDatabase.getUser(username), newsInstance)) {
             req.setAttribute("hideArchiveButton", true);
             requestDispatcher.forward(req, resp);
         } else {
@@ -38,7 +39,8 @@ public class SingleNewsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDatabase.addNewsToUsersArchive(UserDatabase.getUser((String)req.getSession().getAttribute("username")),
+        UserDatabase userDatabase = new UserDatabase();
+        userDatabase.addNewsToUsersArchive(userDatabase.getUser((String)req.getSession().getAttribute("username")),
                 NewsDatabase.getNews(req.getParameter("name")));
         resp.sendRedirect("/");
     }

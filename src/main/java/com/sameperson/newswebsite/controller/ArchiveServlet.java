@@ -15,7 +15,7 @@ import java.io.IOException;
 public class ArchiveServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        User user = UserDatabase.getUser((String)req.getSession().getAttribute("username"));
+        User user = new UserDatabase().getUser((String)req.getSession().getAttribute("username"));
 
         String username = (String)req.getSession().getAttribute("username");
         req.setAttribute("username", username);

@@ -20,8 +20,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String usernameFromPost = req.getParameter("username");
-        if(UserDatabase.containsUsername(usernameFromPost)
-                && UserDatabase.getUser(usernameFromPost).getPassword()
+        UserDatabase userDatabase = new UserDatabase();
+        if(userDatabase.containsUsername(usernameFromPost)
+                && userDatabase.getUser(usernameFromPost).getPassword()
                 .equals(DigestUtils.sha512Hex(req.getParameter("password")))) {
             req.getSession().setAttribute("username", usernameFromPost);
         }

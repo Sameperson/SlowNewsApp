@@ -23,9 +23,10 @@ public class SignUpServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserDatabase userDatabase = new UserDatabase();
         String username = req.getParameter("username");
-        if(!UserDatabase.containsUsername(username)) {
-            UserDatabase.save(new User(req.getParameter("username"), DigestUtils.sha512Hex(req.getParameter("password"))));
+        if(!userDatabase.containsUsername(username)) {
+            userDatabase.save(new User(req.getParameter("username"), DigestUtils.sha512Hex(req.getParameter("password"))));
             req.setAttribute("username", req.getSession().getAttribute("username"));
             req.getSession().setAttribute("username", username);
             resp.sendRedirect("/");
